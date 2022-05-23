@@ -1,4 +1,9 @@
 from Polynomes import *
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+
 
 def calc_z_coin (t,f, pasx,pasy) :
     m = len(t)
@@ -94,28 +99,7 @@ def plan1 (x,y):
             val += x**i * y**j * z1[i][j]
     return val
 
-import matplotlib.pyplot as plt
-import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
 
-ax = Axes3D(plt.figure())
-plan1=np.vectorize(plan1)
-X = np.arange(1, 4, 0.1)
-Y = np.arange(1, 4, 0.1)
-X, Y = np.meshgrid(X, Y)
-Z = plan1(X, Y)
-ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
-plt.show()
-
-plan_z2=calc_z_coin(t,200,5,5)
-n2=len(plan_z2[0])
-m2=len(plan_z2)
-lx=[i*0.5 for i in range (m2)]
-ly=[j*0.5 for j in range (n2)]
-
-
-z2=interpole2v(lx,ly,plan_z2)
 
 def plan2 (x,y):
     val=0
@@ -127,11 +111,33 @@ def plan2 (x,y):
     return val
 
 
-ax = Axes3D(plt.figure())
-plan2=np.vectorize(plan2)
-X = np.arange(1, 4, 0.1)
-Y = np.arange(1, 4, 0.1)
-X, Y = np.meshgrid(X, Y)
-Z = plan2(X , Y)
-ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
-plt.show()
+
+def main():
+    ax = Axes3D(plt.figure())
+    plan1 = np.vectorize(plan1)
+    X = np.arange(1, 4, 0.1)
+    Y = np.arange(1, 4, 0.1)
+    X, Y = np.meshgrid(X, Y)
+    Z = plan1(X, Y)
+    ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
+    plt.show()
+
+    plan_z2 = calc_z_coin(t, 200, 5, 5)
+    n2 = len(plan_z2[0])
+    m2 = len(plan_z2)
+    lx = [i * 0.5 for i in range(m2)]
+    ly = [j * 0.5 for j in range(n2)]
+
+    z2 = interpole2v(lx, ly, plan_z2)
+
+    ax = Axes3D(plt.figure())
+    plan2=np.vectorize(plan2)
+    X = np.arange(1, 4, 0.1)
+    Y = np.arange(1, 4, 0.1)
+    X, Y = np.meshgrid(X, Y)
+    Z = plan2(X , Y)
+    ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
+    plt.show()
+
+if __name__ == "__main__":
+    main()
