@@ -14,6 +14,6 @@ projection_zernike = []
 for n in range(6):
     pr = []
     for m in range(n+1):
-        pr.append(ps(Zernike(m,n,rho,phi),z1,[0,5],[0,5]))
+        pr.append(ps(Zernike_xy(m,n,x,y),z1,[0,5],[0,5]))
     projection_zernike.append(pr)
 print (projection_zernike)
