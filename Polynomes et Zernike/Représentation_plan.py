@@ -12,8 +12,8 @@ def calc_z_coin (t,f, pasx,pasy) :
         Z[i][0]=Z[i-1][0]-Y/f*pasy
     for i in range (1,m):
         for j in range (1,n):
-            X1,Y1=t[i][j-1]
-            X2, Y2 = t[i-1][j]
+            X1 , Y1 = t[i][j-1]
+            X2 , Y2 = t[i-1][j]
             Z[i][j] = 0.5*(Z[i][j-1]-X1/f*pasx + Z[i-1][j]-Y2/f*pasy)
     return Z
 
@@ -79,8 +79,8 @@ t=[[(0,0),(-1,-1),(0,1),(-1,1),(-1,0),(1,1),(-1,0),(-1,1),(-1,0),(-1,1),(-1,1),(
 plan_z1=calc_z_centre(t,200,5,5)
 n1=len(plan_z1[0])
 m1=len(plan_z1)
-lx=[i+0.5 for i in range (m1)]
-ly=[j+0.5 for j in range (n1)]
+lx=[i*0.5 for i in range (m1)]
+ly=[j*0.5 for j in range (n1)]
 
 
 z1=interpole2v(lx,ly,plan_z1)
@@ -97,20 +97,22 @@ def plan1 (x,y):
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+
 ax = Axes3D(plt.figure())
 plan1=np.vectorize(plan1)
-X = np.arange(0, 5, 0.1)
-Y = np.arange(0, 5, 0.1)
+X = np.arange(1, 4, 0.1)
+Y = np.arange(1, 4, 0.1)
 X, Y = np.meshgrid(X, Y)
 Z = plan1(X, Y)
-ax.plot_surface(X, Y, Z)
+ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
 plt.show()
 
 plan_z2=calc_z_coin(t,200,5,5)
 n2=len(plan_z2[0])
 m2=len(plan_z2)
-lx=[i+0.5 for i in range (m2)]
-ly=[j+0.5 for j in range (n2)]
+lx=[i*0.5 for i in range (m2)]
+ly=[j*0.5 for j in range (n2)]
 
 
 z2=interpole2v(lx,ly,plan_z2)
@@ -127,10 +129,9 @@ def plan2 (x,y):
 
 ax = Axes3D(plt.figure())
 plan2=np.vectorize(plan2)
-X = np.arange(0, 5, 0.1)
-Y = np.arange(0, 5, 0.1)
+X = np.arange(1, 4, 0.1)
+Y = np.arange(1, 4, 0.1)
 X, Y = np.meshgrid(X, Y)
-Z = plan2(X, Y)
-Z[0] = 0
-ax.plot_surface(X, Y, Z)
+Z = plan2(X , Y)
+ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
 plt.show()
