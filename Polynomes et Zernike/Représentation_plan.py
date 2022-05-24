@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
+import math
 
 
 def calc_z_coin (t,f, pasx,pasy) :
@@ -99,6 +100,8 @@ def plan1 (x,y):
             val += x**i * y**j * z1[i][j]
     return val
 
+def plan1_polaire_decale(rho,phi):
+    return plan1(rho*math.cos(phi)+2.5,rho*math.sin(phi)+2.5)
 
 
 def plan2 (x,y):
@@ -112,32 +115,31 @@ def plan2 (x,y):
 
 
 
-def main():
-    ax = Axes3D(plt.figure())
-    plan1 = np.vectorize(plan1)
-    X = np.arange(1, 4, 0.1)
-    Y = np.arange(1, 4, 0.1)
-    X, Y = np.meshgrid(X, Y)
-    Z = plan1(X, Y)
-    ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
-    plt.show()
+ax = Axes3D(plt.figure())
+plan1 = np.vectorize(plan1)
+X = np.arange(1, 4, 0.1)
+Y = np.arange(1, 4, 0.1)
+X,Y = np.meshgrid(X,Y)
+Z = plan1(X, Y)
+plt.xlabel('x',color = 'red')
+plt.ylabel('y', color = 'red')
+ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
+plt.show()
+'''
+plan_z2 = calc_z_coin(t, 200, 5, 5)
+n2 = len(plan_z2[0])
+m2 = len(plan_z2)
+lx = [i * 0.5 for i in range(m2)]
+ly = [j * 0.5 for j in range(n2)]
 
-    plan_z2 = calc_z_coin(t, 200, 5, 5)
-    n2 = len(plan_z2[0])
-    m2 = len(plan_z2)
-    lx = [i * 0.5 for i in range(m2)]
-    ly = [j * 0.5 for j in range(n2)]
+z2 = interpole2v(lx, ly, plan_z2)
 
-    z2 = interpole2v(lx, ly, plan_z2)
-
-    ax = Axes3D(plt.figure())
-    plan2=np.vectorize(plan2)
-    X = np.arange(1, 4, 0.1)
-    Y = np.arange(1, 4, 0.1)
-    X, Y = np.meshgrid(X, Y)
-    Z = plan2(X , Y)
-    ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
-    plt.show()
-
-if __name__ == "__main__":
-    main()
+ax = Axes3D(plt.figure())
+plan2=np.vectorize(plan2)
+X = np.arange(1, 4, 0.1)
+Y = np.arange(1, 4, 0.1)
+X, Y = np.meshgrid(X, Y)
+Z = plan2(X , Y)
+ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
+plt.show()
+'''
