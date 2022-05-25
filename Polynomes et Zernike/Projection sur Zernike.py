@@ -31,19 +31,20 @@ def resultat(x,y):
     for n in range(6):
         k = 0
         for m in range(-n,n+1,2):
-            Zernike(0,0,m,n)
+            Zernike_xy.n, Zernike_xy.m = n,m
             res += (projection_zernike[n][k])*Zernike_xy(x,y)
             k += 1
     return res
 
 ax = Axes3D(plt.figure())
-R = np.arange(0,1.5,0.1)
-Phi = np.arange(0,2*math.pi+0.1,0.1)
+R = np.arange(0,1.5,0.05)
+Phi = np.arange(0,2*math.pi+0.1,0.05)
 R,P = np.meshgrid(R, Phi)
 X , Y = R*np.cos(P) , R*np.sin(P)
+#Zernike_xy.n, Zernike_xy.m = 1,-1
 resultat = np.vectorize(resultat)
 Z = resultat(X,Y)
-X, Y = 1.5*X+2.5, 1.5*Y+2.5
+#Z = np.vectorize(Zernike_xy)(X,Y)
 ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
 plt.xlabel('x', color = 'red')
 plt.ylabel('y', color = 'red')
