@@ -4,7 +4,7 @@ from Représentation_plan import *
 
 
 def ps(f,g,domaine_x,domaine_y):
-    return dblquad(lambda rho, phi : 1/(math.pi)*f(rho,phi)*g(rho,phi), domaine_y[0], domaine_y[1], domaine_x[0], domaine_x[1],epsabs=1e-1,epsrel=1e-3)[0]
+    return dblquad(lambda rho, phi : 1/(math.pi)*f(rho,phi)*g(rho,phi), domaine_y[0], domaine_y[1], domaine_x[0], domaine_x[1],epsabs=1e-5,epsrel=1e-5)[0]
 
 plan_z1=calc_z_centre(t,200,5,5)
 lx=[i*0.5 for i in range (m1)]
@@ -18,7 +18,7 @@ for n in range(6):
     pr = []
     for m in range(-n,n+1,2):
         Zernike_xy(0,0,m,n)
-        prod = ps(Zernike,plan1_polaire_decale,[0,1.5],[0,2*math.pi])
+        prod = ps(Zernike,plan1_polaire_decale,[0,1],[0,2*math.pi])
         pr.append(prod)
     projection_zernike.append(pr)
 
@@ -37,12 +37,12 @@ def resultat(x,y):
     return res
 
 ax = Axes3D(plt.figure())
-R = np.arange(0,1.5,0.05)
+resultat = np.vectorize(resultat)
+R = np.arange(0,1,0.05)
 Phi = np.arange(0,2*math.pi+0.1,0.05)
 R,P = np.meshgrid(R, Phi)
 X , Y = R*np.cos(P) , R*np.sin(P)
 #Zernike_xy.n, Zernike_xy.m = 1,-1
-resultat = np.vectorize(resultat)
 Z = resultat(X,Y)
 #Z = np.vectorize(Zernike_xy)(X,Y)
 ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)

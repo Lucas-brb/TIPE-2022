@@ -100,8 +100,11 @@ def plan1 (x,y):
             val += x**i * y**j * z1[i][j]
     return val
 
+def plan1_dec(x,y):
+    return plan1(3/2*x+2.5,3/2*y+2.5)
+
 def plan1_polaire_decale(rho,phi):
-    return plan1(rho*math.cos(phi)+2.5,rho*math.sin(phi)+2.5)
+    return plan1(3/2*rho*math.sin(phi)+2.5,3/2*rho*math.cos(phi)+2.5)
 
 
 def plan2 (x,y):
@@ -116,11 +119,16 @@ def plan2 (x,y):
 
 
 ax = Axes3D(plt.figure())
-plan1 = np.vectorize(plan1)
-X = np.arange(1, 4, 0.1)
-Y = np.arange(1, 4, 0.1)
-X,Y = np.meshgrid(X,Y)
-Z = plan1(X, Y)
+plan1_dec = np.vectorize(plan1_dec)
+R = np.arange(0,1,0.05)
+Phi = np.arange(0,2*math.pi+0.1,0.05)
+R,P = np.meshgrid(R, Phi)
+X , Y = R*np.cos(P) , R*np.sin(P)
+"""X = np.arange(1, 4, 0.1)
+Y = np.arange(1, 4, 0.1)"""
+plan1_polaire_decale = np.vectorize(plan1_polaire_decale)
+#X,Y = np.meshgrid(X,Y)
+Z = plan1_dec(X, Y)
 plt.xlabel('x',color = 'red')
 plt.ylabel('y', color = 'red')
 ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
