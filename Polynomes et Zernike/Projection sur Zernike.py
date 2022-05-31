@@ -4,7 +4,7 @@ from Représentation_plan import *
 
 
 def ps(f,g,domaine_rho,domaine_phi):
-    return dblquad(lambda rho, phi : 1/(math.pi)*f(rho,phi)*g(rho,phi), domaine_phi[0], domaine_phi[1], lambda rho : domaine_rho[0], lambda rho : domaine_rho[1], epsabs=1e-5, epsrel=1e-5)[0]
+    return dblquad(lambda rho, phi : 1/(math.pi)*f(rho,phi)*g(rho,phi)*rho, domaine_phi[0], domaine_phi[1], lambda rho : domaine_rho[0], lambda rho : domaine_rho[1], epsabs=1e-5, epsrel=1e-5)[0]
 
 plan_z1=calc_z_centre(t,200,5,5)
 lx=[i*0.5 for i in range (m1)]
