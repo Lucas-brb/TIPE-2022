@@ -30,7 +30,7 @@ def bulle(t1,t2): #fonction qui crée une bulle dans la cuve
                 t2[a-p][b-w]=200
 
 
-t1,t2=tableau(2000,5000)
+t1,t2=tableau(3000,5000)
 for i in range(1000):
     bulle(t1,t2)
 
