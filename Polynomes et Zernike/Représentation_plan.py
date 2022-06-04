@@ -133,7 +133,9 @@ plt.xlabel('x',color = 'red')
 plt.ylabel('y', color = 'red')
 ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
 plt.show()
-'''
+
+
+
 plan_z2 = calc_z_coin(t, 200, 5, 5)
 n2 = len(plan_z2[0])
 m2 = len(plan_z2)
@@ -150,4 +152,3 @@ X, Y = np.meshgrid(X, Y)
 Z = plan2(X , Y)
 ax.plot_surface(X, Y, Z,cmap = cm.coolwarm)
 plt.show()
-'''
