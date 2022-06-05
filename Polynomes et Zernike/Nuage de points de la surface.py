@@ -48,7 +48,7 @@ for j in range(1,11):
 z=[]
 for j in range(len(Z)):
     for i in range(len(Z[0])):
-        z.append(Z[j][i])
+        z.append(-Z[j][i])
     
 
 
@@ -58,7 +58,7 @@ import matplotlib.pyplot as plt
 
 from mpl_toolkits.mplot3d import Axes3D
 
-for i in range(0,180,10):
+for i in range(0,360,10):
     fig = plt.figure()
 
     ax = fig.gca(projection='3d')
@@ -69,11 +69,11 @@ for i in range(0,180,10):
 
     ax.set_xlim3d([0.0,12]) ; ax.set_xlabel('X')
 
-    ax.set_ylim3d([0.0, 12]) ; ax.set_ylabel('Y')
+    ax.set_ylim3d([0.0, 10]) ; ax.set_ylabel('Y')
 
     ax.set_zlim3d([-0.06, 0.06]) ; ax.set_zlabel('Z')
 
 # Afficher
 
-    ax.view_init(elev=0., azim=i)
+    ax.view_init(elev=10., azim=i)
     plt.show()
