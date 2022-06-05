@@ -139,10 +139,10 @@ def interpole2v (lx,ly,t):
     m=len(ly)
     inter=[[0]]
     for k in range (n):
-        Lx.append(lagrangeX(lx,k))
+        Lx.append(lagrangeX(lx,k)) # Calcul des Lagrangiens selon x
     for l in range (m):
-        Ly.append([lagrangeY(ly,l)])
+        Ly.append([lagrangeY(ly,l)]) # Calcul des Lagrangiens selon y
     for i in range (n):
         for j in range (m):
-            inter=somme2v(inter,mult_scal2v(mult2v(Lx[i],Ly[j]),t[i][j]))
+            inter=somme2v(inter,mult_scal2v(mult2v(Lx[i],Ly[j]),t[i][j])) # Somme pour chaque point
     return inter
