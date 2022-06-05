@@ -97,7 +97,7 @@ def mult_monom2v (pol,x,i,j):
     n=len(s)
     m=len(s[0])
     z1=[0]*j
-    for k in range (n):                 #je rajoute à chaque sous liste autant de zéro que le degré du monom en Y
+    for k in range (n):                 #rajoute à chaque sous liste autant de zéro que le degré du monom en Y
         s[k]=z1+s[k]
     z2=[[0]*(m+j)]*i                    #decale le degré du polynome en X
     return z2+s

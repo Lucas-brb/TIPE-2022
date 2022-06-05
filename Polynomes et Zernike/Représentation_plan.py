@@ -136,7 +136,7 @@ plt.show()
 
 
 
-plan_z2 = calc_z_coin(t, 200, 5, 5)
+plan_z2 = calc_z_centre(t, 200, 5, 5)
 n2 = len(plan_z2[0])
 m2 = len(plan_z2)
 lx = [i * 0.5 for i in range(m2)]
