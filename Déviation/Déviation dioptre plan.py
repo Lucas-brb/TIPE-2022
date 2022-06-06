@@ -13,11 +13,6 @@ for i in range(1,10,2):
     y=(np.arcsin(N*np.sin(x))+np.arcsin(R*np.sin(x))-np.arcsin(N*R*np.sin(x))-x)*(180/np.pi)
     plt.plot(x*180/np.pi,y,label = f'R = {R:.2}')
     plt.legend()
-
-
-
-
-
 ## Double dioptre vers la gauche
 
 
