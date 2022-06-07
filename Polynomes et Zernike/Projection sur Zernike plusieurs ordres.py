@@ -15,7 +15,7 @@ for i in  range (6):
 
     z1=interpole2v(lx,ly,plan_z1)
     projection_zernike = []
-    for n in range(i):
+    for n in range(i+1):
         pr = []
         for m in range(-n,n+1,2):
             Zernike_xy(0,0,m,n) #Calcul du polynômes Z(n,m)
@@ -25,7 +25,7 @@ for i in  range (6):
 
     def resultat(x,y):
         res = 0
-        for n in range(i):
+        for n in range(i+1):
             k = 0
             for m in range(-n,n+1,2):
                 Zernike_xy.n, Zernike_xy.m = n,m
@@ -40,7 +40,7 @@ for i in  range (6):
     R,P = np.meshgrid(R, Phi)
     X , Y = R*np.cos(P) , R*np.sin(P)
     Z = resultat(X,Y)
-    ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
+    ax.plot_surface(Y, X, Z, cmap=cm.coolwarm)
     plt.xlabel('x', color = 'red')
     plt.ylabel('y', color = 'red')
     plt.show()
