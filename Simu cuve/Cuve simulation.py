@@ -10,7 +10,7 @@ def tableau(i,j):
 def dimtab2D(t):
     return len(t), len(t[0])
 
-def bulle(t1,t2): #fonction qui crée une bulle dans la cuve
+def bulle(t1,t2): #fonction qui crée une bulle dans la cuve , modifie 2 tableaux un pour le trajet, l'autre pour l'affichage
     i,j=dimtab2D(t1)
     r=randint(1,50) # rayon de la bulle
     (a,b)=(randint(0,i),randint(0,j)) # place de la bulle
@@ -24,7 +24,6 @@ def bulle(t1,t2): #fonction qui crée une bulle dans la cuve
 t1,t2=tableau(3000,5000)
 for i in range(1000):
     bulle(t1,t2)
-
 
 def somme(t,i):
     # somme la ième ligne de t
