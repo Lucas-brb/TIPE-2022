@@ -33,6 +33,3 @@ def Zernike_xy(x,y,m=None,n=None):
     else:
         Zernike_xy.n = n
     return Zernike(math.sqrt(x*x+y*y),math.atan2(y,x),Zernike_xy.m,Zernike_xy.n)
-
-def Zernike_xy00(x,y):
-    return Zernike(math.sqrt(x*x+y*y),math.atan2(y,x),0,0)

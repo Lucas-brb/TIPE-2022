@@ -106,7 +106,6 @@ def plan1_dec(x,y):
 def plan1_polaire_decale(rho,phi):
     return plan1(3/2*rho*math.sin(phi)+2.5,3/2*rho*math.cos(phi)+2.5)
 
-
 def plan2 (x,y):
     val=0
     n=len(z2)
@@ -116,25 +115,18 @@ def plan2 (x,y):
             val += x**i * y**j * z2[i][j]
     return val
 
-
-
 ax = Axes3D(plt.figure())
 plan1_dec = np.vectorize(plan1_dec)
 R = np.arange(0,1,0.05)
 Phi = np.arange(0,2*math.pi+0.1,0.05)
 R,P = np.meshgrid(R, Phi)
 X , Y = R*np.cos(P) , R*np.sin(P)
-"""X = np.arange(1, 4, 0.1)
-Y = np.arange(1, 4, 0.1)"""
 plan1_polaire_decale = np.vectorize(plan1_polaire_decale)
-#X,Y = np.meshgrid(X,Y)
 Z = plan1_dec(X, Y)
 plt.xlabel('x',color = 'red')
 plt.ylabel('y', color = 'red')
 ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
 plt.show()
-
-
 
 plan_z2 = calc_z_centre(t, 200, 5, 5)
 n2 = len(plan_z2[0])

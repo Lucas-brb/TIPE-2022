@@ -1,20 +1,11 @@
-#-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
-#
-# Author:      barbi
-#
-# Created:     19/05/2022
-# Copyright:   (c) barbi 2022
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
 import numpy as np
 from PIL import Image
 from pylab import *
 import matplotlib.pyplot as plt
 
 def tableau(i,j):
-    return [[4.44*10**(-13) for a in range(j)] for k in range(i)],[[100 for a in range(j)] for k in range(i)] # 4.44*10**(-13) représente le temps de parcours de la case
+    return [[4.44*10**(-13) for a in range(j)] for k in range(i)],[[100 for a in range(j)] for k in range(i)]
+# 4.44*10**(-13) représente le temps de parcours de la case
 
 def dimtab2D(t):
     return len(t), len(t[0])
@@ -61,8 +52,6 @@ def simulation(t):
     print(moyenne(L))
     return (np.array(L)-moyenne(L))/1000,A
 
-
-
 X,Y=simulation(t1)
 plt.close()
 plt.plot(X,Y)
@@ -70,8 +59,6 @@ plt.xlim(-5e-15,5e-15)
 plt.ylabel('ligne de la cuve')
 plt.xlabel('écart entre les temps de parcours')
 plt.show()
-
- 
 
 a=np.array(t2)
 image = Image.fromarray(a)

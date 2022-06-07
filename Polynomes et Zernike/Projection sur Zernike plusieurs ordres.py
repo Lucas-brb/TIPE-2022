@@ -11,7 +11,7 @@ plan_z1=calc_z_centre(t,200,5,5)
 lx=[i*0.5 for i in range (m1)]
 ly=[j*0.5 for j in range (n1)]
 
-for i in  range (10):
+for i in  range (6):
 
     z1=interpole2v(lx,ly,plan_z1)
     projection_zernike = []
@@ -22,10 +22,6 @@ for i in  range (10):
             prod = ps(Zernike,plan1_polaire_decale,[0,1],[0,2*math.pi]) #Porjection du front d'onde sur Z(n,m)
             pr.append(prod)
         projection_zernike.append(pr)
-
-    print (np.array(projection_zernike))
-
-
 
     def resultat(x,y):
         res = 0
@@ -43,9 +39,7 @@ for i in  range (10):
     Phi = np.arange(0,2*math.pi+0.1,0.05)
     R,P = np.meshgrid(R, Phi)
     X , Y = R*np.cos(P) , R*np.sin(P)
-    #Zernike_xy.n, Zernike_xy.m = 1,-1
     Z = resultat(X,Y)
-    #Z = np.vectorize(Zernike_xy)(X,Y)
     ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
     plt.xlabel('x', color = 'red')
     plt.ylabel('y', color = 'red')
