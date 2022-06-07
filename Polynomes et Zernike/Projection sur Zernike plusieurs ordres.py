@@ -19,7 +19,7 @@ for i in  range (6):
         pr = []
         for m in range(-n,n+1,2):
             Zernike_xy(0,0,m,n) #Calcul du polynômes Z(n,m)
-            prod = ps(Zernike,plan1_polaire_decale,[0,1],[0,2*math.pi]) #Porjection du front d'onde sur Z(n,m)
+            prod = ps(Zernike,plan1_polaire_decale,[0,1],[0,2*math.pi])/ps(Zernike,Zernike,[0,1],[0,2*math.pi]) #Porjection du front d'onde sur Z(n,m)
             pr.append(prod)
         projection_zernike.append(pr)
 
