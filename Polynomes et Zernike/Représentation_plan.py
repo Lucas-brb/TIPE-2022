@@ -1,3 +1,6 @@
+"""Représentation plan
+Auteur : Armand Caillon"""
+
 from Polynomes import *
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,6 +10,7 @@ import math
 
 
 def calc_z_coin (t,f, pasx,pasy) :
+    """On initialise la surface à partir d'un coin"""
     m = len(t)
     n = len(t[0])
     Z = [[0 for _ in range (n)] for _ in range (m)]
@@ -24,6 +28,7 @@ def calc_z_coin (t,f, pasx,pasy) :
     return Z
 
 def calc_z_centre (t,f, pasx,pasy) :
+    """On initialise à partir du centre"""
     m = len(t)
     n = len(t[0])
     Z = [[0 for _ in range (n)] for _ in range (m)]

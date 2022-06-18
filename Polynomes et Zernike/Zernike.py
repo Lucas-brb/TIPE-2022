@@ -1,3 +1,6 @@
+"""Zernike
+Auteur : Lucas Barbier"""
+
 import math
 
 def Rmn(m,n,rho):
@@ -23,6 +26,7 @@ def Zernike(rho,phi,m=None,n=None):
         return Rmn(m,n,rho)*math.sin(m*phi)
 
 def Zernike_xy(x,y,m=None,n=None):
+    """Zernike en coordonnées cartésiennes"""
     if m==None:
         m = Zernike_xy.m
     else:

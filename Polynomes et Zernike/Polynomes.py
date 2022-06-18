@@ -1,9 +1,14 @@
+"""Polynomes
+Auteur : Armand Caillon"""
+
 import copy
 p1=[[1,2,3],[0,3],[0,3,4,0,0]]
 p2=[[2,3],[0,2,0]]
 
-#fonctions à 1 variable utiles
+"""fonctions à 1 variable utiles"""
+
 def normalize1v (pol1):
+    """supprime les zéros inutiles dan sle polynôme"""
     s=copy.deepcopy (pol1)
     while s[-1]==0 and len(s)>1:
         s.pop(len(s)-1)
@@ -33,7 +38,7 @@ def mult_scal1v (pol,x):
     return s
 
 def mult_monom1v (pol,x,i):
-    """Multiplie le polynôme par X^i"""
+    """Multiplie le polynôme par x*X^i"""
     p=copy.deepcopy (pol)
     m=mult_scal1v (p,x)
     s=[0]*i
@@ -49,7 +54,8 @@ def mult1v (pol1,pol2):
         m=somme1v(m,s)
     return normalize1v(m)
 
-#polynome 2 variables
+"""polynome à 2 variables"""
+
 def  normalize2v (pol):
     p=copy.deepcopy(pol)
     n=len(p)

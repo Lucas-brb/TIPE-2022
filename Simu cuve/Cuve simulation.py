@@ -1,16 +1,20 @@
+"""Simulation cuve
+Auteur : Lucas Barbier"""
+
 import numpy as np
 from PIL import Image
 from pylab import *
 import matplotlib.pyplot as plt
 
 def tableau(i,j):
+    """On crée notre cuve d'eau"""
     return [[4.44*10**(-13) for a in range(j)] for k in range(i)],[[100 for a in range(j)] for k in range(i)]
 # 4.44*10**(-13) représente le temps de parcours de la case
 
 def dimtab2D(t):
     return len(t), len(t[0])
 
-def bulle(t1,t2): #fonction qui crée une bulle dans la cuve , modifie 2 tableaux un pour le trajet, l'autre pour l'affichage
+def bulle(t1,t2): #fonction qui crée une bulle dans la cuve, modifie 2 tableaux un pour le trajet, l'autre pour l'affichage
     i,j=dimtab2D(t1)
     r=randint(1,50) # rayon de la bulle
     (a,b)=(randint(0,i),randint(0,j)) # place de la bulle
@@ -39,6 +43,7 @@ def moyenne(L):
     return(s/len(L))
 
 def simulation(t):
+    """On fair traverser les rayons"""
     L=[]
     A=[]
     for i in range(len(t)):
